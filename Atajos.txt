@@ -1,0 +1,2 @@
+ctrl shift  p   open dev tools
+alt shft f indetaxion de codigo
