@@ -62,9 +62,85 @@ String dia2str_B(int dia){
     }
 }
 
-void main(){
+//for 
 
-  print(hhmmss(h: 4,m: 50));
-  print(dia2str_A(3));
-  print(dia2str_A(5));
+bool es_primo(int n){
+  for(int d=2; d*d<=n;d++){
+
+    if(n % d == 0) return false;
+  }
+
+  return n>1;
 }
+
+List<int> lista_primos(int tamanyo){
+  var primos =<int>[];
+  int n=2;
+  while(primos.length < tamanyo){
+    if(es_primo(n)){
+      primos.add(n);
+    }
+    n++;
+  }
+
+  print("ultimo ${n-1}");
+
+  return primos;
+}
+
+muestra_lista_primos(int tam){
+
+
+    for(var p in lista_primos(tam)){
+      print(p);
+    }
+    /*
+    for(int i=0; i<L.length; i++){
+      print(p[i]);
+    }
+    */
+}
+
+
+List<List<int>> parejas_primos(int tam){
+  var primos=lista_primos(tam);
+  List<List<int>> parejas=[];
+
+  for(int i=1; i < primos.length; i++){
+    if(primos[i]- primos[i-1]==2){
+      parejas.add([primos[i-1], primos[i]]);
+    }
+
+  }
+
+  return parejas;
+}
+
+
+//switch
+
+int str2dia_A(String sdia){
+  int dia;
+  switch(sdia){
+    case 'lunes':
+      dia=1;
+      break;
+    case 'martes':
+      dia=2;
+      break;
+    case 'domingo':
+      dia=7;
+      break;  
+    default:
+     dia=-1;   
+  }
+  return dia;
+}
+
+  int str2dia_b(String dia) => dias_semana.indexOf(dia);
+
+void main(){
+    print(str2dia_A('martes'));
+    print(str2dia_b('martes'));
+}
+
